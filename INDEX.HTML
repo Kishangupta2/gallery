@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>GALLER PREVIEW</title>
+    <link rel="stylesheet" href="STYLE.CSS">
+</head>
+<body>
+   <div id="gallery" >
+   <img src="https://i.pinimg.com/474x/4f/b4/6c/4fb46cbcdc51660fb01bdd8528a8c03e.jpg" id="current-image" alt="image"  height="620" width="500">
+   
+</div>
+   <div class="btns">
+    <button id="prev-button">Prev</button>
+    <input id="reset" type="reset" value="Reset">
+    <button id="next-button">Next</button>
+      
+</div>
+<img src=""  alt="">
+<script>
+    const gallery = document.getElementById('gallery');
+const prevButton = document.getElementById('prev-button');
+const nextButton = document.getElementById('next-button');
+
+const images = ['./images/bmw.jpg','./images/merce.jpg','./images/xxksk.jpg','./images/kko.jpg','./images/lom.jpg','./images/lps.jpg','./images/kxd.jpg','./images/kskks.jpg','./images/range.jpg'];
+let currentIndex=0;
+
+prevButton.addEventListener('click',() => {
+    currentIndex= (currentIndex + 1 + images.length) % images.length;
+    updateImage();
+});
+
+nextButton.addEventListener('click',() => {
+    currentIndex= (currentIndex +1 ) % images.length;
+    updateImage();
+});
+
+function updateImage(){
+    var img = gallery.querySelector('#current-image');
+    img.classList.add('fade-out');
+    img.width=500;
+    img.height=620;
+    setTimeout(() => {
+        img.src = images[currentIndex];
+        img.alt = images[currentIndex];
+        img.classList.remove('fade-out');
+    },500);
+}
+</script>
+</body>
+</html>
